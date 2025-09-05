@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Haswing elektromos motorok – Hajósbolt landing</title>
+  <meta name="description" content="Haswing elektromos csónakmotorok és eredeti alkatrészek. Csendes, erős és megbízható meghajtás horgászathoz és túrákhoz." />
+
+  <!-- Google Fonts: Inter (body) + Poppins (headings) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0a5565;
+      --card:#083944;
+      --muted:#9fbfda;
+      --text:#eaf0ff;
+      --brand:#35d0ff;
+      --accent:#00c389;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 20px;
+      --maxw: 1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{ scroll-behavior: smooth; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    body{
+      margin:0;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 70% -10%, #183050 0%, transparent 60%) , var(--bg);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    main{ scroll-snap-type: y proximity; }
+    section.snap{ scroll-snap-align: start; scroll-margin-top: 80px; }
+
+    a{ color:inherit; text-decoration:none }
+    .container{ max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+    /* NAV */
+    .nav{
+      position: sticky; top:0; z-index: 50; backdrop-filter: blur(10px);
+      background: color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{ position:relative; display:flex; align-items:center; justify-content:space-between; height:80px; }
+    .brand{ display:flex; gap:12px; align-items:center; font-weight:700; letter-spacing:.2px; color:var(--text); }
+    .logo-img{ width:120px; height:120px; border-radius:8px; object-fit:contain; display:block; }
+    .center-logo{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      border-radius: 8px;
+      pointer-events: none;
+      display: block;
+      z-index: 1;
+    }
+    .menu{ display:flex; gap:22px; align-items:center; z-index:2; font-family:Inter, sans-serif; }
+    .menu a{ color: var(--muted); font-weight:600; padding:10px 6px; border-radius:10px; }
+    .menu a:hover{ color:var(--text); }
+    .cta{ background: linear-gradient(180deg, var(--accent), #00a773); color:#07231b; padding:10px 16px; font-weight:800; border-radius:14px; box-shadow: var(--shadow); border: none; z-index:2; font-family:Poppins, Inter, sans-serif; }
+    .cta:hover{ filter:brightness(1.05) }
+    .hamb{ display:none; background:none; border:none; color:var(--text); font-size:26px; z-index:3; }
+
+    /* HERO */
+    .hero{ padding: 72px 0 48px; position:relative; overflow:hidden; }
+    .grid-hero{ display:grid; grid-template-columns: 1.1fr .9fr; gap: 36px; align-items:start; }
+
+    .eyebrow{ color: var(--brand); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.8rem; margin-bottom:8px; font-family:Poppins, Inter, sans-serif; }
+
+    /* Hero text */
+    .hero-text{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding-right: 6px;
+      min-height: 220px;
+    }
+    .hero-text h1{
+      font-family: Poppins, Inter, sans-serif;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height:1.02;
+      margin:0 0 12px 0;
+      font-weight:800;
+      letter-spacing: -0.01em;
+      text-rendering:optimizeLegibility;
+      color:var(--text);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.45);
+    }
+
+    /* dekorvonal a cím alatt — animálva */
+    .title-deco{
+      width:72px;
+      height:6px;
+      border-radius:6px;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+      margin-bottom: 18px;
+      box-shadow: 0 6px 18px rgba(53,208,255,0.06);
+      transform-origin: left center;
+      transform: scaleX(0);
+      opacity: 0;
+      animation: decoIn 700ms cubic-bezier(.22,.95,.16,1) 220ms forwards;
+    }
+    @keyframes decoIn { to { transform: scaleX(1); opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .title-deco { animation: none; transform: none; opacity: 1; } * { scroll-behavior: auto; } }
+
+    /* lead - sorkizárt + drop-cap */
+    .lead{
+      color: var(--muted);
+      font-size: clamp(15px, 1.5vw, 18px);
+      max-width: 58ch;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      margin: 0 0 8px 0;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .lead::first-letter{
+      float:left;
+      font-family: Poppins, Inter, sans-serif;
+      font-weight:800;
+      font-size: 56px;
+      line-height: 0.85;
+      margin-right: 12px;
+      color: var(--text);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.55);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .lead::first-line{ font-weight:600; color: var(--text); }
+
+    @media (max-width: 980px){ .lead::first-letter{ font-size:44px; margin-right:10px; line-height:0.95; } }
+    @media (max-width: 720px){ .lead{ text-align:left; hyphens:none; } .lead::first-letter{ display:none; } .hero-text h1{ font-size:28px; } }
+
+    .hero-cta{ display:flex; gap:12px; margin-top:18px; flex-wrap:wrap; }
+    .ghost{ background: transparent; border: 1px solid rgba(255,255,255,.15); color: var(--text); padding:10px 16px; border-radius:14px; font-weight:700; }
+    .ghost:hover{ border-color: rgba(255,255,255,.35) }
+
+    /* mock illusztráció */
+    .mock{
+      width:100%; aspect-ratio: 4/3; border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+      position:relative; overflow:hidden;
+      display:block;
+    }
+    .mock img{ width:100%; height:100%; object-fit:cover; display:block; border-radius: inherit; }
+    .wave{ position:absolute; inset:auto -10%  -20% -10%; height: 60%; background: radial-gradient(60% 100% at 50% 0%, rgba(53,208,255,.7), rgba(53,208,255,0) 70%); filter: blur(30px); opacity:.25; pointer-events:none; }
+
+    /* SECTION: shared */
+    .features{ display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; margin-top:24px; }
+    .card{ background: var(--card); border: 1px solid rgba(255,255,255,.06); padding:20px; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .icon{ width:36px; height:36px; border-radius:10px; display:grid; place-items:center; background: rgba(53,208,255,.15); margin-bottom:10px; }
+
+    .section{ padding: 80px 0; }
+    .section h2{ font-family:Poppins, Inter, sans-serif; font-size: clamp(24px, 3.2vw, 40px); margin:0 0 12px; }
+    .section p.lead{ margin: 0 0 30px; }
+
+    /* PRODUCTS */
+    .products{ display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
+    .product{ display:flex; flex-direction:column; gap:10px; }
+    .product .price{ font-weight:800; font-size: 20px; }
+    .badge{ font-size:12px; padding:4px 10px; border-radius:999px; background: rgba(0,195,137,.15); color:#9ff3d8; width:max-content; border:1px solid rgba(255,255,255,.08) }
+    .specs{ display:grid; grid-template-columns: 1fr 1fr; gap:6px 12px; color: var(--muted); font-size:14px; }
+
+    /* PARTS */
+    .parts{ display:grid; grid-template-columns: repeat(4, 1fr); gap:18px; }
+
+    /* actions under grids */
+    .section-actions{
+      display:flex;
+      justify-content:flex-end;
+      margin-top:18px;
+      gap:12px;
+    }
+
+    /* CTA strip */
+    .cta-strip{ display:flex; align-items:center; justify-content:space-between; gap:14px; background: linear-gradient(90deg, rgba(53,208,255,.15), rgba(0,195,137,.12)); padding: 18px 20px; border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); }
+
+    /* footer */
+    footer{ padding:40px 0 60px; color: var(--muted); }
+
+    /* responsive */
+    @media (max-width: 980px){
+      .grid-hero{ grid-template-columns: 1fr; }
+      .products{ grid-template-columns: repeat(2, 1fr); }
+      .features{ grid-template-columns: 1fr 1fr 1fr; }
+      .center-logo{ display:none; }
+      .hero-text{ padding-right:0; padding-bottom:14px; }
+      .section-actions{ justify-content:center; }
+    }
+    @media (max-width: 720px){
+      .menu{ display:none; }
+      .hamb{ display:block; }
+      .features{ grid-template-columns: 1fr; }
+      .products{ grid-template-columns: 1fr; }
+      .parts{ grid-template-columns: 1fr 1fr; }
+      .nav-open .menu{ position: absolute; top:70px; left:0; right:0; display:flex; flex-direction:column; gap:0; background: color-mix(in oklab, var(--bg) 90%, transparent); border-bottom:1px solid rgba(255,255,255,.06); }
+      .nav-open .menu a{ padding:16px 20px; border-radius:0; border-top:1px solid rgba(255,255,255,.06) }
+      .nav-open .menu .cta{ margin:12px 20px; }
+      .logo-img{ width:56px; height:56px; }
+      .hero-text h1{ font-size:28px; }
+    }
+
+    /* utilities */
+    .muted{ color: var(--muted); }
+    .input{ width:100%; padding:12px 14px; background:#0b1426; color:var(--text); border-radius:12px; border:1px solid rgba(255,255,255,.1); outline:none }
+    .input:focus{ box-shadow: 0 0 0 3px rgba(53,208,255,.12); border-color: rgba(53,208,255,.6); }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" id="top">
+    <div class="container nav-inner">
+      <a href="#top" class="brand" aria-label="Haswing hajósbolt kezdőlap">
+        <img src="logo2.png" alt="Trinexus Aqua Hajósboltok logó" class="logo-img" />
+        <span>Trinexus Aqua Hajósboltok</span>
+      </a>
+
+      <!-- középső logó -->
+      <img src="Hasw1.png" alt="Haswing középső logó" class="center-logo" />
+
+      <button class="hamb" aria-label="Menü megnyitása" onclick="document.body.classList.toggle('nav-open')">☰</button>
+      <div class="menu" role="navigation" aria-label="Fő menü">
+        <a href="#motorok">Motorok</a>
+        <a href="#alkatreszek">Alkatrészek</a>
+        <a class="cta" href="#ajanlat">Ajánlatkérés</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero section snap" aria-labelledby="hero-title">
+      <div class="container grid-hero">
+        <!-- SZÖVEG (bal oldal) -->
+        <div class="hero-text">
+          <div class="eyebrow">Csendes teljesítmény a vízen</div>
+          <h1 id="hero-title">Haswing elektromos csónakmotorok – megbízható erő, nulla emisszió</h1>
+          <div class="title-deco" aria-hidden="true"></div>
+
+          <div class="lead">
+            Horgászathoz, kiránduláshoz és természetvédelem-barát közlekedéshez. Válassz motorjaink és eredeti alkatrészeink közül, és élvezd a zökkenőmentes, karbantartásbarát használatot. A Haswing megbízhatósága és alacsony zajszintje lehetővé teszi, hogy közelebb kerülj a természethez anélkül, hogy zavarnád a környezetet.
+          </div>
+
+          <div class="hero-cta">
+            <a class="cta" href="#motorok">Böngéssz a motorok között</a>
+            <a class="ghost" href="#miert">Miért Haswing?</a>
+          </div>
+
+          <div style="height:14px"></div>
+          <div class="cta-strip">
+            <div>
+              <strong>Ingyenes szakmai tanácsadás</strong><br>
+              Beállítás, akku ajánló, tolóerő méretezés – segítünk a választásban.
+            </div>
+            <a class="ghost" href="#ajanlat">Kérj ajánlatot →</a>
+          </div>
+        </div>
+
+        <!-- KÉP (jobb oldal) -->
+        <div>
+          <div class="mock" role="img" aria-label="Elektromos csónakmotor illusztráció">
+            <img src="haswing-motor-2.jpg" alt="Haswing elektromos csónakmotor" loading="lazy">
+            <div class="wave"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MIÉRT -->
+    <section class="section snap" id="miert" aria-labelledby="miert-title">
+      <div class="container">
+        <h2 id="miert-title">Miért a Haswing?</h2>
+        <p class="lead">
+  Csendes működés, precíz fordulatszabályzás és kiváló ár-érték.<br>
+  Tavakon és természetvédelmi vizeken is engedélyezett.
+	</p>
+        <div class="features">
+          <div class="card">
+            <div class="icon" aria-hidden="true">⚡</div>
+            <h3>Hatékony tolóerő</h3>
+            <p>12–24V rendszerek, finom léptékű sebességszabályzás, alacsony fogyasztás.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">🔇</div>
+            <h3>Extra csendes</h3>
+            <p>Szinte rezgésmentes futás – a halak és a szomszédok is hálásak lesznek.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">🧰</div>
+            <h3>Könnyű karbantartás</h3>
+            <p>Eredeti alkatrészek és támogatás: propeller, nyírócsap, kábelek, kormánykar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOTOROK (visszaépítve) -->
+    <section class="section snap" id="motorok" aria-labelledby="motorok-title">
+      <div class="container">
+        <h2 id="motorok-title">Motorok</h2>
+        <p class="lead">
+  Válogatott Haswing modellek: csónakokhoz, horgász kajakhoz és<br>
+  kisebb vitorlásokhoz.
+	</p>
+        <div class="products">
+          <article class="card product" aria-labelledby="p1">
+            <div class="badge">Új</div>
+            <h3 id="p1">Haswing Osapian 55</h3>
+            <p class="muted">12V • 55 lbs • teleszkópos kar • állítható dőlésszög</p>
+            <div class="specs">
+              <div>Feszültség</div><div>12 V</div>
+              <div>Tolóerő</div><div>55 lbs</div>
+              <div>Súly</div><div>~7.5 kg</div>
+              <div>Szár</div><div>92 cm</div>
+            </div>
+            <div class="price">99.900 Ft</div>
+            <div class="hero-cta">
+              <a class="cta" href="#ajanlat">Ajánlatot kérek</a>
+              <a class="ghost" href="#">Részletek</a>
+            </div>
+          </article>
+
+          <article class="card product" aria-labelledby="p2">
+            <div class="badge">Kedvenc</div>
+            <h3 id="p2">Haswing Cayman 80 GPS</h3>
+            <p class="muted">24V • 80 lbs • orrmotor • GPS rögzítés és sodródás kompenzáció</p>
+            <div class="specs">
+              <div>Feszültség</div><div>24 V</div>
+              <div>Tolóerő</div><div>80 lbs</div>
+              <div>Vezérlés</div><div>Táv + pedál</div>
+              <div>Funkció</div><div>GPS Anchor</div>
+            </div>
+            <div class="price">549.900 Ft-tól</div>
+            <div class="hero-cta">
+              <a class="cta" href="#ajanlat">Ajánlatot kérek</a>
+              <a class="ghost" href="#">Részletek</a>
+            </div>
+          </article>
+
+          <article class="card product" aria-labelledby="p3">
+            <div class="badge">Kompakt</div>
+            <h3 id="p3">Haswing Protruar 2.0</h3>
+            <p class="muted">12V • kb. 2 LE ekvivalens • kefe nélküli motor</p>
+            <div class="specs">
+              <div>Feszültség</div><div>12 V</div>
+              <div>Teljesítmény</div><div>kefe nélküli</div>
+              <div>Vezérlés</div><div>Fokozatmentes</div>
+              <div>Súly</div><div>~11 kg</div>
+            </div>
+            <div class="price">229.900 Ft</div>
+            <div class="hero-cta">
+              <a class="cta" href="#ajanlat">Ajánlatot kérek</a>
+              <a class="ghost" href="#">Részletek</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- ÚJ GOMB: Összes motor -->
+        <div class="section-actions" aria-hidden="false">
+          <a class="ghost" href="/motorok" aria-label="Összes motor megtekintése">Összes motor ›</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALKATRÉSZEK (visszaépítve) -->
+    <section class="section snap" id="alkatreszek" aria-labelledby="alkatreszek-title">
+      <div class="container">
+        <h2 id="alkatreszek-title">Alkatrészek</h2>
+        <p class="lead">Eredeti Haswing pótalkatrészek és kiegészítők, hogy a vízen maradj.</p>
+        <div class="parts">
+          <div class="card">
+            <h3>Propellerek</h3>
+            <p>2/3 tollú, gyorsrögzítős megoldások különböző modellekhez.</p>
+            <a class="ghost" href="#ajanlat">Érdekel</a>
+          </div>
+          <div class="card">
+            <h3>Nyírócsap + anya</h3>
+            <p>Gyári minőség, a meghajtás védelmére tervezve.</p>
+            <a class="ghost" href="#ajanlat">Érdekel</a>
+          </div>
+          <div class="card">
+            <h3>Kormánykarok</h3>
+            <p>Teleszkópos, dőlésszög állítási lehetőséggel.</p>
+            <a class="ghost" href="#ajanlat">Érdekel</a>
+          </div>
+          <div class="card">
+            <h3>Kábelek & csatlakozók</h3>
+            <p>Biztonságos, alacsony veszteségű bekötéshez.</p>
+            <a class="ghost" href="#ajanlat">Érdekel</a>
+          </div>
+        </div>
+
+        <!-- ÚJ GOMB: Összes alkatrész -->
+        <div class="section-actions" aria-hidden="false">
+          <a class="ghost" href="/alkatreszek" aria-label="Összes alkatrész megtekintése">Összes alkatrész ›</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ajánlatkérés / űrlap -->
+    <section class="section snap" id="ajanlat" aria-labelledby="ajanlat-title">
+      <div class="container">
+        <h2 id="ajanlat-title">Kérj személyre szabott ajánlatot</h2>
+        <p class="lead">Írd meg hajód típusát, terhelést és a tervezett használatot – 24 órán belül részletes ajánlattal válaszolunk.</p>
+        <form class="card" onsubmit="handleSubmit(event)">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px">
+            <label>Neved<br>
+              <input required name="name" class="input" placeholder="Vezetéknév Keresztnév" />
+            </label>
+            <label>Email<br>
+              <input required type="email" name="email" class="input" placeholder="nev@email.hu" />
+            </label>
+            <label>Hajó/kajak típusa<br>
+              <input name="boat" class="input" placeholder="pl. felfújható csónak, horgászkajak" />
+            </label>
+            <label>Használat<br>
+              <select name="use" class="input">
+                <option value="horgaszat">Horgászat</option>
+                <option value="tura">Túrázás</option>
+                <option value="vitorlas">Segédmeghajtás vitorláson</option>
+              </select>
+            </label>
+          </div>
+          <label style="display:block; margin-top:10px">Üzenet / igények<br>
+            <textarea name="msg" class="input" rows="5" placeholder="Mekkora tolóerőre számítasz? Van meglévő akkud? Milyen vízen használod?"></textarea>
+          </label>
+          <div style="display:flex; gap:12px; align-items:center; margin-top:14px">
+            <button class="cta" type="submit">Ajánlatkérés elküldése</button>
+            <span id="form-status" class="muted"></span>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="snap">
+    <div class="container" style="display:grid; gap:6px">
+      <div><strong>Trinexus Aqua Hajósboltok</strong> – A Haswing elektromos motorok szaküzlete</div>
+      <div style="font-size:14px">© <span id="year"></span> Trinexus Aqua Hajósboltok • <a href="#top">Vissza az elejére ↑</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+    function handleSubmit(e){
+      e.preventDefault();
+      const status = document.getElementById('form-status');
+      status.textContent = 'Köszönjük! Hamarosan jelentkezünk.';
+      e.target.reset();
+    }
+    document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click', ()=>document.body.classList.remove('nav-open')));
+  </script>
+</body>
+</html>
